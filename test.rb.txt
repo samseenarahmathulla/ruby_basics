@@ -1,0 +1,47 @@
+#!/usr/bin/ruby -w
+puts "hello there!"
+
+print <<EOF
+   This is the first way of creating
+   here document ie. multiple line string.
+EOF
+
+print <<"EOF2";                # same as above
+   This is the second way of creating
+   here document ie. multiple line string.
+EOF2
+
+print <<`EOC`                 # execute commands
+	echo hi there
+	echo lo there
+EOC
+
+print <<"foo", <<"bar"  # you can stack them
+	I said foo.
+foo
+	I said bar.
+bar
+
+class Customer
+   @@no_of_customers = 0
+   def initialize(id, name, addr)
+      @cust_id = id
+      @cust_name = name
+      @cust_addr = addr 
+      puts "Customer id is "+@cust_id+" and name is "+@cust_name+" and address is "+@cust_addr
+      puts "Customer id is #@cust_id and name is #@cust_name and address is #@cust_addr"
+   end
+	
+end
+cust = Customer.new("1", "sam", "22 addd")
+
+
+class Sample
+   def hello
+      puts "Hello Ruby!"
+   end
+end
+
+# Now using above class to create objects
+object = Sample.new
+object.hello

@@ -1,0 +1,19 @@
+#! /usr/bin/ruby -w
+class Factorial
+	#find the factorial of a number
+	def get_values
+		puts "Enter the number:"
+		no = gets.to_i
+		result = 1
+		if no > 0
+			(1..no).each do |i|
+				result = result * i	
+			end
+                elsif no == 0
+			result = 0
+		end
+		puts result
+	end
+end
+obj = Factorial.new
+obj.get_values

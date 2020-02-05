@@ -1,0 +1,57 @@
+#! /usr/bin/ruby -w
+class Palindrome
+
+	#find the palindrome numbers
+       # enter the input number - 10 output = > [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+       #enter the input number - 121 output => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101, 111, 121]
+	def get_result
+		puts "enter the input number"
+		@input = gets.to_i
+		palindrome_arr = []
+		(0..@input).each do |i|
+			num = i
+			reverse_num = num.to_s.reverse.to_i
+			if (num == reverse_num)
+				palindrome_arr.push(reverse_num)
+			end
+		end
+		palindrome_arr
+	end
+		
+	#closest palindrome number
+	# if 121 is input, ouput is 131; 
+	#if 125 is input, ouput is 121; 
+	#if input is 127, output is 131
+	def closest
+		left_close = get_result.last #last value eg: 121
+		palindrome_arr = []
+		(@input+1...1000).each do |i| #1000 is considered as the maximum safe integer
+			num = i
+			reverse_num = num.to_s.reverse.to_i
+			if (num == reverse_num)
+				palindrome_arr.push(reverse_num)
+				break
+			end
+		end
+		puts palindrome_arr.to_s
+		right_close = palindrome_arr.first
+		#case when input is a palindrome ie.121 or 9 etc
+		if (@input - left_close) == 0 
+			puts "The closest palindrome number is #{right_close}"
+		#case when input is a palindrome ie.121 or 9 etc
+		elsif (right_close - @input) == 0
+			puts "The closest palindrome number is #{left_close}"
+		elsif ( (@input - left_close) < (right_close - @input) ) 
+			puts "----" 
+			puts "The closest palindrome number is #{left_close}"
+		elsif (  (@input - left_close) > (right_close - @input) ) 
+			puts "0))))"
+			puts "The closest palindrome number is #{right_close}"
+		end
+		 
+	end
+	
+end
+obj = Palindrome.new
+#puts obj.get_result
+obj.closest

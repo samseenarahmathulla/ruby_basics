@@ -1,0 +1,21 @@
+#! /usr/bin/ruby -w
+class RoundRot
+	def compare
+		puts "Enter the first string:"
+		str1 = gets.chomp()
+		puts "Enter the second string:"
+		str2 = gets.chomp()
+		str = ""
+		str = str1+str1
+		puts str.to_s
+		if ( (str1.length == str2.length) && (str.include?str2) )
+		  puts "strings are rotations of each other"
+		elsif (str1.length != str2.length)
+		  puts "strings are of different length"
+		else 
+	          puts "strings are not rotations"
+		end
+	end
+end
+obj = RoundRot.new
+obj.compare

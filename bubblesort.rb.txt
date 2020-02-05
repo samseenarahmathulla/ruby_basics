@@ -1,0 +1,27 @@
+#!/usr/bin/ruby -w
+
+
+def bubble_sort(array)
+	n = array.length
+	
+     loop do
+ 	#puts array.to_a
+puts "----"
+	swapped = false
+	(n-1).times do |i|
+		#puts array[i]
+		if (array[i] > array[i+1])
+			array[i], array[i+1] = array[i+1], array[i]
+			#puts "----"
+			swapped = true
+		end
+puts "+++++"
+		puts array
+	end  
+		break if not swapped
+	end
+return array
+end
+array = [5,1,4,2,8,9,3,1,1,1]
+
+puts "RESULT IS #{bubble_sort(array)}"

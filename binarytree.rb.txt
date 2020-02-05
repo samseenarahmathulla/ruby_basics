@@ -1,0 +1,14 @@
+#! /usr/bin/ruby -w
+class TreeNode
+	attr_accessor :value, :left, :right
+	def initialize(value)
+		@value = value
+	end
+end
+tree = TreeNode.new(5)
+tree.left = TreeNode.new(3)
+tree.right = TreeNode.new(8) 
+
+tree.left.left = TreeNode.new(2)
+tree.left.right = TreeNode.new(1)
+pp tree

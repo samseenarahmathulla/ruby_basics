@@ -1,0 +1,66 @@
+!#usr/bin/ruby -v
+
+#puts "enter your name:"
+#name = gets.chomp()
+#puts "Hello #{name}! You are cool" 
+
+class Fibonacci
+  #find the fibinocci number until n - if n= 5, we get 0,1,1,2,3,5
+  def series
+    puts "enter the fibinocci value:"
+    n = gets.to_i
+    fib_array = []
+    f1 =0
+    f2 = 1
+    fib_array.push(f1,f2)
+    f3=0
+    while (f3 < n) do
+    	f3 = f1+f2
+	fib_array.push(f3)
+	f1 = f2
+	f2 = f3
+    end
+    return fib_array
+ end
+ 
+ #find the first n fibinocci numbers
+ def display_numbers(n)
+  fib_array = []
+  f1=0
+  f2 = 1
+  fib_array.push(f1,f2)
+  f3=0
+  while (fib_array.size <= n) 
+   f3 = f1+f2
+   fib_array.push(f3)
+   f1 = f2
+   f2 = f3
+  end
+  return fib_array
+ end
+ 
+ # find the index of the first term in the fibinocci sequence to have 1000 digits.
+ # eg- f12=144, 12th term to contain 3 digits. 
+ def find_index
+   n = 1000 
+   fib_array = []
+   f1=0
+   f2 = 1
+   fib_array.push(f1,f2)
+   count_of_digits = 0
+   while (count_of_digits < n)
+    f3 = f1+f2
+    count_of_digits = f3.to_s.size
+    fib_array.push(f3)
+    f1 = f2
+    f2 = f3
+   end
+   return fib_array.size #gets the index of the term
+ end
+end
+obj = Fibonacci.new
+puts obj.series
+puts "----next method----"
+puts obj.display_numbers(10)
+puts "----find index method----"
+puts obj.find_index

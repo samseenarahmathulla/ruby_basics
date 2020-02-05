@@ -1,0 +1,38 @@
+#! /usr/bin/ruby -w
+class Armstrong
+  
+  # to check if a given number is armstrong or not
+  def get_no
+    puts "enter a number to check if armstrong or not"
+    no = gets.to_i
+    digits_array = no.digits
+    sum = 0
+    (0...digits_array.length).each do |i|
+	sum = sum + (digits_array[i]*digits_array[i]*digits_array[i])
+    end
+    if no == sum 
+	puts "The given number #{no} is an armstrong number"
+    else
+        puts "The given number #{no} is not armstrong number"
+    end
+  
+  end
+   #find all the armstrong numbers between 1 and 1000. 
+    def get_all_nos
+      no_arr = []
+      (0..1000).each do |i|
+        sum = 0
+        digits_array = i.digits
+	(0...digits_array.length).each do |j|
+	  sum = sum + (digits_array[j]*digits_array[j]*digits_array[j])
+	end
+	if i == sum
+	  no_arr.push(sum)
+	end
+      end
+	puts no_arr
+    end
+end
+obj = Armstrong.new
+obj.get_no
+obj.get_all_nos

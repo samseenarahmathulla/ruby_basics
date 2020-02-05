@@ -1,0 +1,66 @@
+
+class Tree
+  attr_accessor :left, :right, :data
+  def initialize(data)
+    @data = data
+    @left = nil
+    @right = nil
+  end
+end
+tree = Tree.new(3)
+tree.left = Tree.new(9)
+#tree.left.left = Tree.new(20)
+#tree.left.right = Tree.new(5)
+tree.right = Tree.new(20)
+tree.right.left = Tree.new(15)
+tree.right.right = Tree.new(7)
+#tree.right.right.left = Tree.new(10)
+#tree.right.right.right = Tree.new(11)
+
+class Queue
+	def initialize
+		@value = []
+	end
+
+	def enqueue(val)
+		@value.push(val)
+	end
+
+	def dequeue
+		@value.shift
+	end
+
+	def empty?
+		@value.empty?
+	end
+end
+
+def vertical_order_tree(tree)
+	hash = {}
+	hd = 0 
+	if tree == nil
+		return
+	end
+	queue = Queue.new
+	queue.enqueue([tree,hd])
+	puts queue.inspect
+	hash[0] = [tree.data]
+	while !queue.empty? do
+		val = queue.dequeue
+		hd = val[1]
+		if hash[hd].nil?
+			hash[hd] = [val[0].data]
+		else
+			hash[hd] = (hash[hd] + [val[0].data]).flatten.uniq
+		end
+		queue.enqueue([val[0].left,hd-1]) if !val[0].left.nil?
+		queue.enqueue([val[0].right,hd+1]) if !val[0].right.nil?
+	end
+	 values = hash.sort
+    	list = []
+	values.each do |i|
+        	list.push(i[1])    
+    	end
+    	puts list
+end
+vertical_order_tree(tree)

@@ -1,0 +1,44 @@
+#! /usr/bin/ruby -w
+class TreeNode
+	attr_accessor :value, :left, :right
+	def initialize(value)
+		@value = value
+	end
+end
+
+require 'minitest/autorun'
+class NodeTest < Minitest::Test
+	def self.tree
+		TreeNode.new(5).tap do |obj|
+			obj.left = TreeNode.new(3)
+			obj.right = TreeNode.new(8)
+			obj.left.left = TreeNode.new(2)
+			obj.left.right = TreeNode.new(1) 
+		end
+	end
+
+        def find_node(node, value)
+		stack = [node]
+		puts "+===="
+		#puts stack
+		until stack.empty?
+			node = stack.pop
+			p node.value
+			return true if node.value == value
+			puts "STACK IS #{stack.class}"
+			stack << node.right if node.right
+			stack << node.left  if node.left
+		end
+		false
+	end
+
+	def test_found_2
+		assert_equal(true, find_node(NodeTest.tree, 2))
+	end
+	def test_found_3
+		assert_equal(true, find_node(NodeTest.tree, 3))
+	end
+	def test_not_found
+		assert_equal(false, find_node(NodeTest.tree, 10))
+	end
+end

@@ -1,0 +1,106 @@
+#!/usr/bin/ruby -w
+abc=["1", "2", "3"]
+abc.each do |i|
+	puts i
+end
+hsh = { "red" => 0xf00, "green" => 0x0f0, "blue" => 0x00f }
+hsh.each do |color, code|
+puts "color is #{color} and code is #{code}"
+end
+
+(10..15).each do |i|
+	puts i
+end
+(10...15).each do |i|
+	puts i
+end
+
+#parallel assignment
+puts "parallel assignment"
+a, b, c = 10, 20, 30
+a,b=b,c 
+puts a,b,c
+puts "------"
+puts "before swapping the 2 nos"
+
+a,b = 10,20
+puts a,b
+a,b = b,a
+puts "after swapping the nos"
+puts a,b
+
+
+puts "------ALTERNATE METHOD"
+a=10
+b=20
+c=""
+c=a
+a=b
+b=c
+
+puts a,b
+puts "-----------SORTINg AN ARRAY"
+@arr = ["2", "1", "5"]
+puts "sorting in ascending order"
+puts @arr.sort 
+puts "or----"
+puts @arr.sort! {|x, y| x <=> y}
+puts "sorting in descending order"
+puts @arr.sort! {|x, y| y <=> x}
+
+puts "-----------SORTINg AN ARRAY--eg2"
+@arr = ["JAVASCRIPT", "css", "Swift"]
+puts "sorting according to string lengths"
+puts @arr.sort!{ |first, second| first.length <=> second.length } 
+puts "sorting in ascending"
+puts @arr.sort! { |first, second| first.upcase <=> second.upcase} 
+puts "sorting in descending"
+puts @arr.sort!{ |first, second| second.upcase <=> first.upcase}
+
+puts "===CASE"
+sum=1
+case sum
+when sum=0
+puts "hey"
+when sum=1
+puts "hello"
+else
+puts "not ready"
+end
+
+puts "+++++++++++ while excecutes when condition is true"
+i=10
+while (i < 30) do
+puts i+=1
+end
+puts ")))))+++++ until excecutes when condition is false"
+i=10
+until(i > 30) do
+puts i+=1
+end
+
+
+
+
+def test
+   yield
+end
+test{ puts "Hello world"}
+
+#!/usr/bin/ruby
+
+myStr = String.new("THIS IS TEST")
+foo = myStr.downcase
+
+puts "#{foo}"
+
+
+puts "====array"
+
+names = Array.new(4, "mac")
+puts "#{names}"
+
+
+a = [1,2,3,4,5]
+b = a.collect{|x| 10*x}
+puts b

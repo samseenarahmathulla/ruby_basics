@@ -1,0 +1,59 @@
+#!/usr/bin/ruby -w
+$global_var=100
+class ABC
+	def test
+		puts " Global varible inside method ABC is #$global_var"
+	end
+end
+class DEF
+	def test
+		puts " Global varible inside method DEF is #$global_var"
+	end
+end
+
+abc=ABC.new
+abc.test
+hhh=DEF.new
+hhh.test
+
+# use of instance variables
+
+class ABC
+	def initialize(id, name, age)
+		@id = id
+		@name = name
+		@age = age
+	end
+	def display_details
+		puts "Customer details are #@id, #@name, #@age"
+	end
+	def display_test
+		puts "Testing the details in ---- Customer details are #@id, #@name, #@age"
+	end
+end
+obj1=ABC.new("1", "sam", "2")
+obj2=ABC.new("2", "shi", "3")
+obj1.display_details
+obj2.display_details
+obj2.display_test
+
+
+
+# use of class variables and constants
+class IRC
+	@@name = "samseena"
+	VAR1 = 100
+        VAR2 = 200
+	def test
+		puts "The name inside test function is #@@name"
+		puts "The CONSTANT inside test function is #{VAR1}"
+	end
+
+	def display
+		puts "The name inside display function is #@@name"
+		puts "The CONSTANT inside test function is #{VAR2}"
+	end
+end
+obj=IRC.new
+obj.test
+obj.display

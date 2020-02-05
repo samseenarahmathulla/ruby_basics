@@ -1,0 +1,22 @@
+#! /usr/bin/ruby -w
+class ABC
+    def generalizedGCD(num, arr)
+    # WRITE YOUR CODE HERE
+    min = arr.min
+    gcd = ""
+    (0...num).each do |i|
+        if ( (arr[i] % min) != 0 )
+            gcd = 1
+            break
+        else
+            gcd = min
+        end
+    end
+    puts "The largest GCD is #{gcd}"
+    return gcd
+  end
+end
+obj=ABC.new
+num=5
+arr=[2,4,6,8,10]
+obj.generalizedGCD num, arr
