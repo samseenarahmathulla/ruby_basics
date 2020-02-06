@@ -1,1 +1,17 @@
-pp Matrix.zero(2)
+#! /usr/bin/ruby -w
+require 'matrix'
+matrix = [
+  [1,1,1],
+  [1,0,1],
+  [1,1,1]
+]
+matrix.each_with_index do |e, row, col|
+    #puts "#{e} at #{row}, #{col}"
+        if e.include?0
+            puts "has 0"
+            (0...e.length).each do |arr|
+                e[arr] = 0
+            end
+           
+        end
+    end
